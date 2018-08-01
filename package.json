@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://consensys.github.io/linnia-faucet/",
   "dependencies": {
+    "ethereumjs-wallet": "^0.6.1",
     "gh-pages": "^1.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

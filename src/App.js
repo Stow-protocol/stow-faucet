@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+
+//Styles
 import './App.css';
+
+// Layouts
+import Home from './layouts/Home';
 
 class App extends Component {
   render() {
@@ -10,9 +15,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Linnia Faucet</h1>
         </header>
-        <p className="App-intro">
-          This Faucet is to create a Linnia User and get started developing using the Linnia Protocol
-        </p>
+        <Home/>
       </div>
     );
   }
