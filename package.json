@@ -5,6 +5,7 @@
   "homepage": "https://consensys.github.io/linnia-faucet/",
   "dependencies": {
     "@linniaprotocol/linnia-july-2018": "^0.1.7",
+    "eth-lib": "https://github.com/alan2207/eth-lib",
     "ethereumjs-wallet": "^0.6.1",
     "gh-pages": "^1.2.0",
     "history": "^4.7.2",
