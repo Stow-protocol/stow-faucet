@@ -4,11 +4,22 @@
   "private": true,
   "homepage": "https://consensys.github.io/linnia-faucet/",
   "dependencies": {
+    "@linniaprotocol/linnia-july-2018": "^0.1.7",
     "ethereumjs-wallet": "^0.6.1",
     "gh-pages": "^1.2.0",
+    "history": "^4.7.2",
+    "ipfs-mini": "^1.1.2",
+    "metamask-logo": "^2.2.0",
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-redux": "^5.0.7",
+    "react-router": "^3.2.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
