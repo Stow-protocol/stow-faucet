@@ -31,12 +31,11 @@ class Home extends Component {
       return (
         <div>
           {intro()}
-          <h2>This are your Linnia Keys.</h2>
-          <p>It Is your responsability to store them safetly. If you loose your keys or they get stolen there is nothing we can do in order to recover them.</p>
-          <p>Save them carefully</p>
-
+          <h1>This are your Linnia Keys</h1>
           <h3>Private Key: {this.state.private_key}</h3>
           <h3>Public Key: {this.state.public_key}</h3>
+          <p>It Is your responsability to store them safetly. If you loose your keys or they get stolen there is nothing we can do in order to recover them.</p>
+          <p>Save them carefully</p>
 
           <button type='button' onClick={this.registerUser} >Register Linnia User</button>
         </div>
