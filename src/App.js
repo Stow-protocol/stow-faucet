@@ -31,6 +31,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Linnia Faucet</h1>
         </header>
+        <Home history={history}/>
         <Router history={history}>
           <Switch>
             <ProtectedRoute
@@ -48,11 +49,10 @@ class App extends Component {
             <Route
               exact
               path='*'
-              render={() => <Home authError={authError} />}
+              render={() => <Home authError={authError} history={history} />}
             />
           </Switch>
         </Router>
-        <Home/>
       </div>
     );
   }

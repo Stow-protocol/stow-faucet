@@ -28,6 +28,7 @@ class Faucet extends Component {
 
     const intro = () =>
       <div>
+        <h1>Register User</h1>
         <p className="App-intro">
           This Faucet is to create a Linnia User and get started developing using the Linnia Protocol
         </p>
