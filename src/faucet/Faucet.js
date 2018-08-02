@@ -29,12 +29,15 @@ class Faucet extends Component {
   }
 
   render () {
-    const { isLoading, userAddress } = this.props
+    const { isLoading, userAddress, message } = this.props
 
     const intro = () =>
-      <p className="App-intro">
-        This Faucet is to create a Linnia User and get started developing using the Linnia Protocol
-      </p>
+      <div>
+        <p className="App-intro">
+          This Faucet is to create a Linnia User and get started developing using the Linnia Protocol
+        </p>
+        {message && <h2 className='error'>{message}</h2>}
+      </div>
 
     const linniaKeys = () =>
       <div>

@@ -5,10 +5,12 @@ import { registerUser, uploadData } from './FaucetActions'
 const mapStateToProps = (state, ownProps) => {
   const userAddress = state.faucet.userAddress
   const isLoading = state.faucet.isLoading
+  const message = state.faucet.message
 
   return {
     isLoading,
     userAddress,
+    message,
   }
 }
 

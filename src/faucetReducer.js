@@ -1,11 +1,13 @@
 import {
     ADD_USER,
     USER_REGISTERED,
+    REGISTRATION_ERROR
   } from './faucet/FaucetActions';
   
   const initialState = {
     isLoading: false,
     userAddress: null,
+    message: null,
   };
   
   const faucetReducer = (state = initialState, action) => {
@@ -15,7 +17,10 @@ import {
     } else if (action.type === USER_REGISTERED) {
         const { userAddress, isLoading } = action;
         return Object.assign({}, state, { userAddress, isLoading });
-    }
+    } else if (action.type === REGISTRATION_ERROR) {
+      const { isLoading, message } = action;
+      return Object.assign({}, state, { isLoading, message });
+  }
   
     return state;
   };
