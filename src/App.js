@@ -7,9 +7,10 @@ import logo from './logo.svg';
 import './App.css';
 
 // Layouts
-import Home from './layouts/Home';
+import Header from './layouts/Header';
 import Faucet from './layouts/faucet/Faucet';
 import UploadData from './layouts/uploadData/UploadData';
+import ShowAuthErrors from './layouts/ShowAuthErrors'
 
 import ProtectedRoute from './ProtectedRoute';
 
@@ -31,7 +32,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Linnia Faucet</h1>
         </header>
-        <Home history={history}/>
+        <Header history={history}/>
         <Router history={history}>
           <Switch>
             <ProtectedRoute
@@ -49,7 +50,7 @@ class App extends Component {
             <Route
               exact
               path='*'
-              render={() => <Home authError={authError} history={history} />}
+              render={() => <ShowAuthErrors authError={authError} history={history} />}
             />
           </Switch>
         </Router>

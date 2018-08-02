@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Home from './layouts/Home';
+import ShowAuthErrors from './layouts/ShowAuthErrors';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { isAuthenticated, authError } = rest;
@@ -12,7 +12,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
         if (isAuthenticated) {
           return <Component {...props} />;
         } else if (authError) {
-          return <Home authError={authError} />;
+          return <ShowAuthErrors authError={authError} />;
         } else {
           return <div />;
         }

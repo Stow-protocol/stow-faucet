@@ -1,22 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import AuthError from '../auth/authError/AuthError';
 
-const Empty = () => {
-  return (
-    <div>
-    </div>
-  );
-};
-
-class Home extends Component {
+class Header extends Component {
   navigateTo = route => () => {
     this.props.history.push(route);
   };
 
   render () {
-    const { authError } = this.props;
-
     return (
       <main className='container'>
         <div className='pure-g'>
@@ -29,7 +18,6 @@ class Home extends Component {
                 onClick={this.navigateTo('/')}>
                 Register User
               </button>
-            {authError ? <AuthError authError={authError} /> : <Empty />}
           </div>
         </div>
       </main>
@@ -37,8 +25,4 @@ class Home extends Component {
   }
 }
 
-Home.propTypes = {
-  authError: PropTypes.string,
-};
-
-export default Home;
+export default Header;
