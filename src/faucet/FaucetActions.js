@@ -1,13 +1,37 @@
 import store from '../store'
 
-export function registerUser (private_key, public_key) {
+export const ADD_USER = 'ADD_USER'
+export const USER_REGISTERED = 'USER_REGISTERED'
+
+const addUser = () => ({
+  type: ADD_USER,
+  isLoading: true
+})
+
+const userRegistered = (userAddress) => ({
+  type: USER_REGISTERED,
+  isLoading: false,
+  userAddress
+})
+
+export function registerUser () {
   // Register User on Linnia
-  console.log("Register User Action")
   return async (dispatch) => {
+    dispatch(addUser())
     const linnia = store.getState().auth.linnia
-    const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts()
+    const [userAddress] = await store.getState().auth.web3.eth.getAccounts()
     const { users } = await linnia.getContractInstances();
-    await users.register({ from: ownerAddress, gas: 500000, gasPrice: 20000000000 });
+
+    //Register User
+    await users.register({ from: userAddress, gas: 500000, gasPrice: 20000000000 });
     console.log("The user was registered sucessfully")
+    dispatch(userRegistered(userAddress))
+  }
+}
+
+export function uploadData (private_key) {
+  // Register User on Linnia
+  return async (dispatch) => {
+    console.log("Upload Data")
   }
 }

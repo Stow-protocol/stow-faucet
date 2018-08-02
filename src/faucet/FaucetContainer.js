@@ -1,9 +1,15 @@
 import { connect } from 'react-redux'
 import Faucet from './Faucet'
-import { registerUser } from './FaucetActions'
+import { registerUser, uploadData } from './FaucetActions'
 
 const mapStateToProps = (state, ownProps) => {
-  return {}
+  const userAddress = state.faucet.userAddress
+  const isLoading = state.faucet.isLoading
+
+  return {
+    isLoading,
+    userAddress,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -11,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
     onRegisterUser: () => {
       dispatch(registerUser())
     },
+    onUploadData: (private_key) => {
+      dispatch(uploadData(private_key))
+    }
   }
 }
 
