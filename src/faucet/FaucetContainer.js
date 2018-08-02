@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Faucet from './Faucet'
-import { registerUser, uploadData } from './FaucetActions'
+import { registerUser } from './FaucetActions'
 
 const mapStateToProps = (state, ownProps) => {
   const userAddress = state.faucet.userAddress
@@ -18,9 +18,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onRegisterUser: () => {
       dispatch(registerUser())
-    },
-    onUploadData: (private_key) => {
-      dispatch(uploadData(private_key))
     }
   }
 }

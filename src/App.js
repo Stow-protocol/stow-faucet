@@ -9,6 +9,7 @@ import './App.css';
 // Layouts
 import Home from './layouts/Home';
 import Faucet from './layouts/faucet/Faucet';
+import UploadData from './layouts/uploadData/UploadData';
 
 import ProtectedRoute from './ProtectedRoute';
 
@@ -32,6 +33,12 @@ class App extends Component {
         </header>
         <Router history={history}>
           <Switch>
+            <ProtectedRoute
+              isAuthenticated={isAuthenticated}
+              path='/upload_data'
+              authError={authError}
+              component={UploadData}
+            />
             <ProtectedRoute
               isAuthenticated={isAuthenticated}
               path='/'

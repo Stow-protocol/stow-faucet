@@ -23,11 +23,6 @@ class Faucet extends Component {
     this.props.onRegisterUser()
   }
 
-  uploadData = (private_key) => {
-    console.log("Upload Data")
-    this.props.onUploadData(private_key)
-  }
-
   render () {
     const { isLoading, userAddress, message } = this.props
 

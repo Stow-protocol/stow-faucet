@@ -45,10 +45,3 @@ export function registerUser () {
     }
   }
 }
-
-export function uploadData (private_key) {
-  // Register User on Linnia
-  return async (dispatch) => {
-    console.log("Upload Data")
-  }
-}
