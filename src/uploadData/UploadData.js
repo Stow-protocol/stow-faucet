@@ -74,7 +74,7 @@ class UploadData extends Component {
             <label htmlFor='metadata'>Metadata </label>
             <input id='metadata' type='text' value={this.state.metadata} onChange={this.onInputChange('metadata')} />
             <br />
-            <input type="file" onChange={this.changeFile} />
+            <input type="file" accept=".json,application/json" onChange={this.changeFile} />
             <br />
             <button type='submit'>Upload</button>
           </form>
