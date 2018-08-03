@@ -1,16 +1,19 @@
 import { connect } from 'react-redux'
 import CreateUsers from './CreateUsers'
-import { createUser } from './CreateUsersActions'
+import { downloadKeys } from './CreateUsersActions'
 
 const mapStateToProps = (state, ownProps) => {
+  const isLoading = state.createUsers.isLoading
+
   return {
+    isLoading,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onCreateUserr: () => {
-      dispatch(createUser())
+    onDownloadKeys: (private_enc_key, public_enc_key, eth_wallet) => {
+      dispatch(downloadKeys(private_enc_key, public_enc_key, eth_wallet))
     }
   }
 }
