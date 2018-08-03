@@ -47,7 +47,7 @@ class UploadData extends Component {
 
     const intro = () =>
     <div>
-        <h1>Upload Data</h1>
+        <h1>Upload Data to Linnia</h1>
         {message && !done && <h2 className='error'>{message}</h2>}
         {isLoading && <div>
               <div className='progress-background' />

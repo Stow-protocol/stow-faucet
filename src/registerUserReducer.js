@@ -2,7 +2,7 @@ import {
     ADD_USER,
     USER_REGISTERED,
     REGISTRATION_ERROR
-  } from './faucet/FaucetActions';
+  } from './registerUser/RegisterUserActions';
   
   const initialState = {
     isLoading: false,
@@ -10,7 +10,7 @@ import {
     message: null,
   };
   
-  const faucetReducer = (state = initialState, action) => {
+  const registerUserReducer = (state = initialState, action) => {
     if (action.type === ADD_USER) {
         const { isLoading } = action;
         return Object.assign({}, state, { isLoading });
@@ -25,5 +25,5 @@ import {
     return state;
   };
   
-  export default faucetReducer;
+  export default registerUserReducer;
   

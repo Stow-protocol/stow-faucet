@@ -6,7 +6,7 @@ const progressStyle = {
   color: 'black',
 }
 
-class Faucet extends Component {
+class RegisterUser extends Component {
   constructor(props) {
     super(props)
     this.state = {private_key: null, public_key: null}
@@ -28,7 +28,7 @@ class Faucet extends Component {
 
     const intro = () =>
       <div>
-        <h1>Register User</h1>
+        <h1>Register Metamask User in Linnia</h1>
         <p className="App-intro">
           This Faucet is to create a Linnia User and get started developing using the Linnia Protocol
         </p>
@@ -85,4 +85,4 @@ class Faucet extends Component {
   }
 }
 
-export default Faucet;
+export default RegisterUser;

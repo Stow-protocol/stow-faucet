@@ -8,9 +8,10 @@ import './App.css';
 
 // Layouts
 import Header from './layouts/Header';
-import Faucet from './layouts/faucet/Faucet';
+import RegisterUser from './layouts/registerUser/RegisterUser';
 import UploadData from './layouts/uploadData/UploadData';
 import ShowAuthErrors from './layouts/ShowAuthErrors'
+import CreateUsers from './layouts/createUsers/CreateUsers'
 
 import ProtectedRoute from './ProtectedRoute';
 
@@ -41,11 +42,15 @@ class App extends Component {
               authError={authError}
               component={UploadData}
             />
+            <Route
+              path='/create_users'
+              component={CreateUsers}
+            />
             <ProtectedRoute
               isAuthenticated={isAuthenticated}
               path='/'
               authError={authError}
-              component={Faucet}
+              component={RegisterUser}
             />
             <Route
               exact
