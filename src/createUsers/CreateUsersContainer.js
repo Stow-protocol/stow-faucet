@@ -13,8 +13,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onDownloadKeys: (private_enc_key, public_enc_key, eth_wallet) => {
-      dispatch(downloadKeys(private_enc_key, public_enc_key, eth_wallet))
+    onDownloadKeys: (eth_wallet) => {
+      dispatch(downloadKeys(eth_wallet))
     }
   }
 }

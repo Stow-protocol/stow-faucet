@@ -12,13 +12,13 @@ const endDownloading = () => ({
 })
 
 
-export function downloadKeys (private_enc_key, public_enc_key, eth_wallet) {
+export function downloadKeys (eth_wallet) {
   return async (dispatch) => {
     console.log("START DOWNLOADING")
     dispatch(startDownloading())
     try{
       await new Promise((resolve) => {
-        setTimeout(resolve, 100)
+        setTimeout(resolve, 1000)
       })
       const pass = prompt("Input a password for exporting your ETH wallet")
       const wallet = eth_wallet.toV3(pass)
@@ -31,16 +31,6 @@ export function downloadKeys (private_enc_key, public_enc_key, eth_wallet) {
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
-  
-      //Download Encryption Keys
-      const enc_keys = {private_encryption_key: private_enc_key, public_encryption_key: public_enc_key }
-      var element2 = document.createElement('a');
-      element2.setAttribute('href', 'data:json,' + encodeURIComponent(JSON.stringify(enc_keys)));
-      element2.setAttribute('download', "linnia_enc_keys.json");
-      element2.style.display = 'none';
-      document.body.appendChild(element2);
-      element2.click();
-      document.body.removeChild(element2);
 
     } catch(e){
     }
