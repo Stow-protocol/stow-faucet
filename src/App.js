@@ -38,19 +38,19 @@ class App extends Component {
           <Switch>
             <ProtectedRoute
               isAuthenticated={isAuthenticated}
-              path='/upload_data'
+              path='/linnia-faucet/upload-data'
               authError={authError}
               component={UploadData}
             />
-            <Route
-              path='/create_users'
-              component={CreateUsers}
-            />
             <ProtectedRoute
               isAuthenticated={isAuthenticated}
-              path='/'
+              path='/linnia-faucet/register-user'
               authError={authError}
               component={RegisterUser}
+            />
+            <Route
+              path='/linnia-faucet'
+              component={CreateUsers}
             />
             <Route
               exact
