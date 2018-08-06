@@ -1,20 +1,21 @@
-export const START_LOADING = 'START_LOADING'
-export const END_LOADING = 'END_LOADING'
+export const START_DOWNLOADING = 'START_DOWNLOADING'
+export const END_DOWNLOADING = 'END_DOWNLOADING'
 
-const startLoading = () => ({
-  type: START_LOADING,
+const startDownloading = () => ({
+  type: START_DOWNLOADING,
   isLoading: true
 })
 
-const endLoading = () => ({
-  type: END_LOADING,
+const endDownloading = () => ({
+  type: END_DOWNLOADING,
   isLoading: false
 })
 
 
 export function downloadKeys (private_enc_key, public_enc_key, eth_wallet) {
   return async (dispatch) => {
-    dispatch(startLoading())
+    console.log("START DOWNLOADING")
+    dispatch(startDownloading())
     try{
       const pass = prompt("Input a password for exporting your ETH wallet")
       const wallet = eth_wallet.toV3(pass)
@@ -41,6 +42,6 @@ export function downloadKeys (private_enc_key, public_enc_key, eth_wallet) {
     } catch(e){
     }
   
-    dispatch(endLoading())
+    dispatch(endDownloading())
   }
 }

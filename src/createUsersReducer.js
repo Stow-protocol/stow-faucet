@@ -1,6 +1,6 @@
 import {
-    START_LOADING,
-    END_LOADING,
+    START_DOWNLOADING,
+    END_DOWNLOADING,
   } from './createUsers/CreateUsersActions';
   
   const initialState = {
@@ -8,10 +8,11 @@ import {
   };
   
   const createUsersReducer = (state = initialState, action) => {
-    if (action.type === START_LOADING) {
+    if (action.type === START_DOWNLOADING) {
+      console.log("START DOWNLOADING2")
       const { isLoading } = action;
       return Object.assign({}, state, { isLoading });
-    } else if (action.type === END_LOADING) {
+    } else if (action.type === END_DOWNLOADING) {
       const { isLoading } = action;
       return Object.assign({}, state, { isLoading });
     }

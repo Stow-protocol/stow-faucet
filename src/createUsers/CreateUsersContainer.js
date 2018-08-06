@@ -3,6 +3,7 @@ import CreateUsers from './CreateUsers'
 import { downloadKeys } from './CreateUsersActions'
 
 const mapStateToProps = (state, ownProps) => {
+  console.log("START DOWNLOADING3")
   const isLoading = state.createUsers.isLoading
 
   return {
