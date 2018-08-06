@@ -17,6 +17,9 @@ export function downloadKeys (private_enc_key, public_enc_key, eth_wallet) {
     console.log("START DOWNLOADING")
     dispatch(startDownloading())
     try{
+      await new Promise((resolve) => {
+        setTimeout(resolve, 100)
+      })
       const pass = prompt("Input a password for exporting your ETH wallet")
       const wallet = eth_wallet.toV3(pass)
   
