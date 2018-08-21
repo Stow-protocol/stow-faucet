@@ -149,7 +149,7 @@ class UploadData extends Component {
               onChange={this.onInputChange("metadata")}
             />
             <Typography variant='body1' className={classes.copy}>
-              Make sure you choose a file that contains <span className={classes.important}>plain text</span>. Everything else will choke!
+              Make sure you choose a file that contains <span className={classes.important}>JSON</span>. Everything else will choke!
             </Typography>
             <input
               type="file"
