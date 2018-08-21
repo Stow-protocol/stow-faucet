@@ -131,6 +131,7 @@ class UploadData extends Component {
               fullWidth
               className={classes.textField}
               value={this.state.public_key}
+              required={true}
               onChange={this.onInputChange("public_key")}
             />
             <Typography variant='body1' className={classes.copy}>
@@ -144,6 +145,7 @@ class UploadData extends Component {
               fullWidth
               className={classes.textField}
               value={this.state.metadata}
+              required={true}
               onChange={this.onInputChange("metadata")}
             />
             <Typography variant='body1' className={classes.copy}>
