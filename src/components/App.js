@@ -67,7 +67,7 @@ const steps = [{
     Component: <RegisterUser />,
     authenticated: true
   }, {
-    title: "Upload A File",
+    title: "Append and Upload A Dummy Data JSON File",
     Component: <UploadData />,
     authenticated: true
   }
