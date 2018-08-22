@@ -88,7 +88,7 @@ export const uploadData = (file, public_key, metadata) => {
     const ipfs = linnia.ipfs;
 
     //TODO: clean this up so that there is less duplicate code
-    if(false) {
+    if(file instanceof Blob) {
       // Read File
       await uploadLocalFile(dispatch, ipfs, linnia);
     } else {

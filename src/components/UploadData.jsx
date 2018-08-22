@@ -106,11 +106,11 @@ class UploadData extends Component {
         <div>
           <Typography variant="body1" className={classes.copy}>
             Now its time to upload your first record to the Linnia Protocol!
-            We'll choose a file from your computer, dress it up, and upload it.
+            We'll use some dummy medical data that we have created, dress it up, and upload it.
           </Typography>
           <Typography variant='body1' className={classes.copy}>
             This should be the <span className={classes.important}>public key</span> you generated in the previous step.
-            This key will encrypt our file so only our user can decrypt it!
+            This key will encrypt our file so only our private encryption key can decrypt it!
           </Typography>
           <form onSubmit={this.uploadFile}>
             <TextField
@@ -138,13 +138,20 @@ class UploadData extends Component {
               onChange={this.onInputChange("metadata")}
             />
             <Typography variant='body1' className={classes.copy}>
-              Make sure you choose a file that contains <span className={classes.important}>JSON</span>. Everything else will choke!
+              <div className={classes.important}>Dummy data json file</div>
+
+              <a href="../dummy-data/Ewa%20Macejkovic.json" target="_blank">click here to preview our dummy data json file</a>
             </Typography>
-            <input
-              type="file"
-              accept=".json,application/json"
-              onChange={this.changeFile}
-            />
+
+            {/*TODO: this is currently not working.  Data ends up with extra \\\*/}
+            {/*<Typography variant='body1' className={classes.copy}>*/}
+              {/*Make sure you choose a file that contains <span className={classes.important}>JSON</span>. Everything else will choke!*/}
+            {/*</Typography>*/}
+            {/*<input*/}
+              {/*type="file"*/}
+              {/*accept=".json,application/json"*/}
+              {/*onChange={this.changeFile}*/}
+            {/*/>*/}
             <br />
             <Button 
               className={classes.button}
@@ -152,7 +159,7 @@ class UploadData extends Component {
               color="secondary"
               type="submit"
             >
-              Upload
+              Upload to IPFS and Append to Linnia Protocol
             </Button>
           </form>
         </div>
