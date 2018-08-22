@@ -1,4 +1,5 @@
 import { encrypt } from '../utils';
+import crypto from 'crypto';
 import store from '../store'
 
 export const UPLOAD_ERROR = 'UPLOAD_ERROR'
@@ -57,6 +58,7 @@ export const uploadData = (file, public_key, metadata) => {
       const [owner] = await store.getState().auth.web3.eth.getAccounts();
       const {records} = await linnia.getContractInstances();
 
+      content.nonce = crypto.randomBytes(256).toString('hex');
       // hash of the plain file
       const hash = linnia.web3.utils.sha3(JSON.stringify(content));
 

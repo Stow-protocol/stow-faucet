@@ -9,6 +9,7 @@
     "@material-ui/icons": "^2.0.3",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "crypto": "^1.0.1",
     "css-loader": "^1.0.0",
     "ethereumjs-wallet": "^0.6.1",
     "gh-pages": "^1.2.0",
