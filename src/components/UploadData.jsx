@@ -155,7 +155,7 @@ class UploadData extends Component {
               onChange={this.onInputChange("metadata")}
             />
             <Typography variant='body1' className={classes.copy}>
-              <div className={classes.important}>Dummy data json file</div>
+              <span className={classes.important}>Dummy data json file</span>
 
             </Typography>
 
@@ -166,8 +166,8 @@ class UploadData extends Component {
                 </Tabs>
               {value === 0 && <TabContainer>
                 <Typography variant='body1' className={classes.copy}>
-                 <div>Linnia recommended Dummy data json file will be used</div>
-
+                 Linnia recommended Dummy data json file will be used.
+                 <br />
                  <a href="../dummy-data/Delicia%20Schowalter.json" target="_blank">Click here to preview our dummy data json file</a>
                 </Typography></TabContainer>}
 
