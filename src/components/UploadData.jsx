@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Success from './../common/Success';
 import Failure from './../common/Failure';
+import jsonFile from '../dummy-data/Ewa Macejkovic';
 
 const styles = (theme) => ({
   button: {
@@ -33,7 +34,7 @@ const styles = (theme) => ({
 class UploadData extends Component {
   constructor(props) {
     super(props);
-    this.state = { file: null, public_key: "", metadata: "" };
+    this.state = { file: jsonFile, public_key: "", metadata: "" };
   }
 
   changeFile = event => {
@@ -57,24 +58,12 @@ class UploadData extends Component {
     const file = this.state.file;
     const public_key = this.state.public_key;
     const metadata = this.state.metadata;
-
-    if (!file) {
-      this.setState({
-        validationError: "Please choose a file to upload."
-      });
-    }
-
-    if (public_key.length < 2) {
-      this.setState({
-        validationError: "Please fill your public encryption key."
-      });
-    }
-
-    if (metadata.length < 2) {
-      return this.setState({
-        validationError: 'Please include metadata.'
-      });
-    }
+    //
+    // if (!file) {
+    //   this.setState({
+    //     validationError: "Please choose a file to upload."
+    //   });
+    // }
 
     this.props.onUploadData(file, public_key, metadata);
   };
