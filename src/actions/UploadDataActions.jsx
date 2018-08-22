@@ -35,7 +35,7 @@ export const uploadData = (file, public_key, metadata) => {
         dispatch(uploadingToIpfs());
         encrypted = await encrypt(
            public_key,
-           JSON.stringify(content),
+           content,
         );
       } catch (e) {
         dispatch(uploadError("Unable to encrypt file. Check the Public Key"));
@@ -100,7 +100,7 @@ export const uploadData = (file, public_key, metadata) => {
         dispatch(uploadingToIpfs());
         encrypted = await encrypt(
            public_key,
-           content,
+           JSON.stringify(content),
         );
       } catch (e) {
         dispatch(uploadError("Unable to encrypt file. Check the Public Key"));
