@@ -66,7 +66,7 @@ class GetEth extends Component {
   getEth = () => {
     axios
       .get(
-        `//faucet.ropsten.be:3001/donate/${this.state.account.toLowerCase()}`
+        `//faucet.ropsten.be/donate/${this.state.account.toLowerCase()}`
       )
       .then(rsp => {
         this.setState({
