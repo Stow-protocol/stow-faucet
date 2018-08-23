@@ -87,7 +87,7 @@ class GetEth extends Component {
       <div>
         {success && <Success>
           <Typography variant='display1' className={classes.alertText}>
-            Success! You should have on more Eth in your account shortly!
+            Success! You should have one more Eth in your account shortly!
           </Typography> 
         </Success>}
         {success === false && <Failure>
