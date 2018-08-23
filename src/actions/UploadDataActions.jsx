@@ -124,7 +124,9 @@ export const uploadData = (file, public_key, metadata) => {
       const [owner] = await store.getState().auth.web3.eth.getAccounts();
       const {records} = await linnia.getContractInstances();
 
-      // hash of the plain file
+      // hash of the plain file plus nonce
+      content.nonce = crypto.randomBytes(256).toString('hex');
+
       const hash = linnia.web3.utils.sha3(JSON.stringify(content));
 
       //Upload file to Linnia
