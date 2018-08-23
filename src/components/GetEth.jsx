@@ -92,7 +92,8 @@ class GetEth extends Component {
         </Success>}
         {success === false && <Failure>
           <Typography variant='display1' className={classes.alertText}>
-            You are greylisted. Please wait at least 24 hours!
+            Your IP address is greylisted for up to 24 hours.
+            <p>Please try this link for Eth: <a href='https://faucet.metamask.io/'> Metamask faucet</a></p>
           </Typography>         
         </Failure>}
         {success === null && <Explanation 
