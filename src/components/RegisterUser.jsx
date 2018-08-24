@@ -39,45 +39,54 @@ class RegisterUser extends Component {
   };
 
   render() {
-    const { userAddress, message, classes } = this.props;
+    const { userAddress, message, classes, users } = this.props;
     const { private_key } = this.state;
-
 
     // If the keys were already generated
     if (private_key) {
+
+      if (userAddress) {
+        return (
+           <Success>
+             <Typography variant='title' className={classes.alertText}>
+               <p>User has been successfully registered with <a target='_blank'
+                                                                href={"https://ropsten.etherscan.io/address/" + users.address}>Linnia
+                 User Contract</a> at address {userAddress}.</p>
+               <a target='_blank' href={"https://ropsten.etherscan.io/address/" + userAddress}> Checkout out your
+                 transaction record on etherscan.
+               </a>
+             </Typography>
+           </Success>
+        );
+      }
+
       if (message) {
         return (
           <Failure className={classes.alertText}>
             <Typography variant='title' className={classes.alertText}>
               {message}
+              <a target='_blank' href={"https://ropsten.etherscan.io/address/"+userAddress}> Transaction record on etherscan.
+              </a>
+
             </Typography>
           </Failure>
         );
       }
 
-      if (userAddress) {
-          return (
-            <Success>
-              <Typography variant='title' className={classes.alertText}>
-                User was successfully created at address {userAddress}.
-              </Typography>
-            </Success>
-          ); 
-      } else {
-        return (
-          <div>
-            <RegisterUserKeys private_key={this.state.private_key} public_key={this.state.public_key} />
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-              onClick={this.registerUser}
-            >
-              Register Linnia User
-            </Button>
-          </div>
-        );
-      }
+      return (
+        <div>
+          <RegisterUserKeys private_key={this.state.private_key} public_key={this.state.public_key} />
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.button}
+            onClick={this.registerUser}
+          >
+            Register Linnia User
+          </Button>
+        </div>
+      );
+
     } else {
       return (
         <div>

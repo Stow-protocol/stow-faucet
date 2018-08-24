@@ -9,16 +9,19 @@ const addUser = () => ({
   isLoading: true
 })
 
-const userRegistered = (userAddress) => ({
+const userRegistered = (userAddress, users) => ({
   type: USER_REGISTERED,
   isLoading: false,
-  userAddress
+  userAddress,
+  users
 })
 
-const registrationError = (message) => ({
+const registrationError = (message, userAddress, users) => ({
   type: REGISTRATION_ERROR,
   isLoading: false,
-  message
+  message,
+  userAddress,
+  users
 })
 
 export function registerUser () {
@@ -32,16 +35,12 @@ export function registerUser () {
     //Register User
     try{
       const alreadyRegistered = await users.isUser(userAddress);
-      if (alreadyRegistered){
-        console.log("The User was already registered")
-        dispatch(registrationError("The User was already registered"))
-      } 
-      else{
-        await users.register({ from: userAddress, gas: 500000, gasPrice: 20000000000 });
-        dispatch(userRegistered(userAddress))
+      if (!alreadyRegistered) {
+        await users.register({from: userAddress, gas: 500000, gasPrice: 20000000000});
       }
+      dispatch(userRegistered(userAddress, users))
     } catch(e){
-      dispatch(registrationError("Unable to register the user"))
+      dispatch(registrationError("Unable to register the user", userAddress, users))
     }
   }
 }
