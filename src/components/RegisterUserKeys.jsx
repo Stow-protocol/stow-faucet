@@ -69,8 +69,8 @@ class RegisterUserKeys extends Component {
           </Typography>
         </div>
         <Typography variant="body1" className={classes.copy}>
-          It is your responsibility to store them safetly. If you loose your
-          keys or they get stolen there is nothing we can do in order to recover
+          It is your responsibility to store them safely. If you loose your
+          keys or they get stolen, there is nothing we can do in order to recover
           them. Save them carefully!
         </Typography>
         <Typography variant="body1" className={classes.copy}>
