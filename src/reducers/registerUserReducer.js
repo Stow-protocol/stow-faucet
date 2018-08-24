@@ -15,11 +15,11 @@ import {
         const { isLoading } = action;
         return Object.assign({}, state, { isLoading });
     } else if (action.type === USER_REGISTERED) {
-        const { userAddress, isLoading } = action;
-        return Object.assign({}, state, { userAddress, isLoading });
+        const { userAddress, isLoading, users } = action;
+        return Object.assign({}, state, { isLoading, userAddress, users });
     } else if (action.type === REGISTRATION_ERROR) {
-      const { isLoading, message } = action;
-      return Object.assign({}, state, { isLoading, message });
+      const { isLoading, message, userAddress, users } = action;
+      return Object.assign({}, state, { isLoading, message, userAddress, users });
   }
   
     return state;

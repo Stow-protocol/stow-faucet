@@ -5,10 +5,12 @@ import { registerUser } from '../actions/RegisterUserActions'
 const mapStateToProps = (state, ownProps) => {
   const userAddress = state.registerUser.userAddress
   const message = state.registerUser.message
+  const users = state.registerUser.users
 
   return {
     userAddress,
     message,
+    users
   }
 }
 
