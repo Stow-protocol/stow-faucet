@@ -49,10 +49,10 @@ class RegisterUser extends Component {
         return (
            <Success>
              <Typography variant='title' className={classes.alertText}>
-               <p>User has been successfully registered with <a target='_blank'
+               <p>Your account has been successfully registered with the <a target='_blank'
                                                                 href={"https://ropsten.etherscan.io/address/" + users.address}>Linnia
                  User Contract</a> at address {userAddress}.</p>
-               <a target='_blank' href={"https://ropsten.etherscan.io/address/" + userAddress}> Checkout out your
+               <a target='_blank' href={"https://ropsten.etherscan.io/address/" + userAddress}> Check out out your
                  transaction record on etherscan.
                </a>
              </Typography>
