@@ -88,7 +88,8 @@ class UploadData extends Component {
   render() {
     const { done, classes, message } = this.props;
     const { validationError, value } = this.state;
-
+    const isLocal = window.location.hostname === 'localhost';
+    const dummyDataLink = `${isLocal ? '' : '/linnia-faucet'}/dummy-data/Delicia%20Schowalter.json`;
 
     if (done) {
       return (
@@ -168,7 +169,7 @@ class UploadData extends Component {
                 <Typography variant='body1' className={classes.copy}>
                  Linnia recommended Dummy data json file will be used.
                  <br />
-                 <a href="../dummy-data/Delicia%20Schowalter.json" target="_blank">Click here to preview our dummy data json file</a>
+                 <a href={dummyDataLink} target="_blank">Click here to preview our dummy data json file</a>
                 </Typography></TabContainer>}
 
               {value === 1 && <TabContainer>{/*TODO: this is currently not working.  Data ends up with extra \\\*/}
