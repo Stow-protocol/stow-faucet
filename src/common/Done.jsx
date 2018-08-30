@@ -15,11 +15,11 @@ const styles = {
 const Done = ({ classes }) => (
   <StepContainer>
     <Success>
-      <Typography 
-        variant='display2' 
+      <Typography
+        variant='display2'
         className={classes.heroText}
       >
-        You're done! Go for and and build our decentralized future!
+        You're done! Go for and build our decentralized future!
       </Typography>
     </Success>
   </StepContainer>
