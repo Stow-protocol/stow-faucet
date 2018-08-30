@@ -80,6 +80,7 @@ class RegisterUser extends Component {
             variant="contained"
             color="secondary"
             className={classes.button}
+            style={{fontSize:'3rem'}}
             onClick={this.registerUser}
           >
             Register Linnia User
@@ -91,8 +92,8 @@ class RegisterUser extends Component {
       return (
         <div>
           <Typography variant="body1" className={classes.copy}>
-            First, we need to generate a pair of encryption keys. 
-            You will use these keys to encrypt and decrypt files 
+            First, we need to generate a pair of encryption keys.
+            You will use these keys to encrypt and decrypt files
             on behalf of your user. To understand more about
             Private and Public Encryption Keys please: <a href="https://github.com/ConsenSys/linnia-resources/">Go Here</a>
           </Typography>
