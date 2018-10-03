@@ -78,7 +78,7 @@ export const authenticate = () => async dispatch => {
     return dispatch(authFailure(LINNIA_MISCONFIGURED));
   }
 
-  const linnia = new Linnia(web3, ipfs, { hubAddress });
+  const linnia = new Linnia(web3, { linniaContractUpgradeHubAddress: hubAddress });
 
   dispatch(authSuccess(web3, ipfs, linnia));
 };

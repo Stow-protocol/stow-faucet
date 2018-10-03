@@ -1,6 +1,6 @@
-import { encrypt } from '../utils';
 import crypto from 'crypto';
 import store from '../store'
+import Linnia from '@linniaprotocol/linnia-js';
 
 export const UPLOAD_ERROR = 'UPLOAD_ERROR'
 export const UPLOADING_TO_IPFS = 'UPLOADING_TO_IPFS'
@@ -24,15 +24,19 @@ const dataUploaded = () => ({
   done: true
 });
 
-export const uploadData = (file, public_key, metadata) => {
-
+export const uploadData = (file, public_key, originalMetadata) => {
+  let metadata = {}
+  originalMetadata.forEach( element => {
+    metadata[element.key] = element.value;
+  });
+  
   let uploadFile = async function (dispatch, ipfs, linnia, content) {
     let encrypted, dataUri;
     
     //Encrypt
     try {
       dispatch(uploadingToIpfs());
-      encrypted = await encrypt(
+      encrypted = await Linnia.util.encrypt(
          public_key,
          content,
       );
@@ -44,17 +48,17 @@ export const uploadData = (file, public_key, metadata) => {
     //Upload to IPFS
     try {
       dataUri = await new Promise((resolve, reject) => {
-        ipfs.add(encrypted, (err, ipfsRed) => {
+        ipfs.add(JSON.stringify(encrypted), (err, ipfsRed) => {
           err ? reject(err) : resolve(ipfsRed);
         });
       });
     } catch (e) {
+      console.log(e)
       dispatch(uploadError("Unable to upload file to IPFS"));
       return;
     }
 
     const [owner] = await store.getState().auth.web3.eth.getAccounts();
-    const {records} = await linnia.getContractInstances();
 
     content.nonce = crypto.randomBytes(256).toString('hex');
     // hash of the plain file
@@ -62,7 +66,15 @@ export const uploadData = (file, public_key, metadata) => {
 
     //Upload file to Linnia
     try {
-      await records.addRecord(
+      metadata.dataFormat = "json";
+      metadata.storage = "IPFS";
+      // TODO, get the encryption scheme and the linnia js version from linnia js object
+      // Add those 2 has static variables of the Linnia js class
+      metadata.encryptionScheme = "x25519-xsalsa20-poly1305";
+      metadata.linniajsVersion = "0.3.0";
+      metadata.encryptionPublicKey = public_key;
+
+      await linnia.addRecord(
          hash,
          metadata,
          dataUri,
@@ -73,6 +85,7 @@ export const uploadData = (file, public_key, metadata) => {
          },
       );
     } catch (e) {
+      console.log(e)
       dispatch(uploadError("Unable to upload file to Linnia"));
       return;
     }
@@ -83,7 +96,7 @@ export const uploadData = (file, public_key, metadata) => {
   // Upload data to Linnia
   return async (dispatch) => {
     const linnia = store.getState().auth.linnia;
-    const ipfs = linnia.ipfs;
+    const ipfs = store.getState().auth.ipfs;
 
     // Local File
     if(file instanceof Blob) {

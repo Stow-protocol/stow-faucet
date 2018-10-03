@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import DeleteIcon from '@material-ui/icons/Delete';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
@@ -30,12 +31,20 @@ const styles = (theme) => ({
   button: {
     marginTop: 20
   },
+  removeButton: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit
+  },
   important: {
     fontWeight: 'bold',
     fontFamily: 'Heavitas'
   },
   copy: {
     margin: '30px 0px 20px'
+  },
+  textFieldWithMargin: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit
   },
   textField: {
     marginBottom: 10
@@ -53,7 +62,14 @@ const styles = (theme) => ({
 class UploadData extends Component {
   constructor(props) {
     super(props);
-    this.state = { file: jsonFile, public_key: "", metadata: "", value: 0, };
+    this.state = { file: jsonFile, 
+      public_key: "", 
+      metadata: [
+        {'key':'domain','value':''},
+        {'key':'keywords','value':''},
+      ], 
+      value: 0, 
+    };
   }
 
   handleChange = (event, value) => {
@@ -70,9 +86,40 @@ class UploadData extends Component {
     this.setState({ [property]: value });
   };
 
+  onMetadataKeyChange = index => event => {
+    let metadata = this.state.metadata;
+    metadata[index].key = event.target.value;
+    this.setState({
+      metadata: metadata
+    });
+  };
+
+  onMetadataValueChange = index => event => {
+    let metadata = this.state.metadata;
+    metadata[index].value = event.target.value;
+    this.setState({
+      metadata: metadata
+    });
+  };
+
   onConfirmError = () => {
     this.setState({
       validationError: ''
+    });
+  }
+
+  onAddMetadataKey = () => {
+    const metadata = this.state.metadata.concat([{'key':'','value':''}])
+    this.setState({
+      metadata
+    });
+  }
+
+  onRemoveMetadataKey = index => event => {
+    let metadata = this.state.metadata;
+    metadata.splice(index,1);
+    this.setState({
+      metadata
     });
   }
 
@@ -87,10 +134,9 @@ class UploadData extends Component {
 
   render() {
     const { done, classes, message } = this.props;
-    const { validationError, value } = this.state;
+    const { validationError, value, metadata } = this.state;
     const isLocal = window.location.hostname === 'localhost';
     const dummyDataLink = `${isLocal ? '' : '/linnia-faucet'}/dummy-data/Delicia%20Schowalter.json`;
-
     if (done) {
       return (
         <div>
@@ -142,19 +188,53 @@ class UploadData extends Component {
               onChange={this.onInputChange("public_key")}
             />
             <Typography variant='body1' className={classes.copy}>
-              <span className={classes.important}>Metadata</span> should be text that people will use to find your data. 
+              <span className={classes.important}>Metadata</span> should be what people will use to find your data. 
               What will be useful for you to query later?
             </Typography>
-            <TextField
-              id="metadata"
-              label="MetaData"
-              type="text"
-              fullWidth
-              className={classes.textField}
-              value={this.state.metadata}
-              required={true}
-              onChange={this.onInputChange("metadata")}
-            />
+
+            {metadata.map((m, i) => 
+              <div key={'metadata-'+i.toString()}>
+                  <TextField
+                    key={'key-'+i.toString()}
+                    id="metadata-input-key"
+                    label="Key"
+                    type="text"
+                    className={classes.textFieldWithMargin}
+                    value={m.key}
+                    required={true}
+                    onChange={this.onMetadataKeyChange(i)}
+                  />
+                  <TextField
+                    key={'value'+i.toString()}
+                    id="metadata-input-value"
+                    label="Value"
+                    type="text"
+                    className={classes.textField}
+                    value={m.value}
+                    required={true}
+                    onChange={this.onMetadataValueChange(i)}
+                  />    
+                <Button 
+                  key={'remove-'+i.toString()}
+                  variant="fab" 
+                  mini color="secondary" 
+                  aria-label="Delete"
+                  className={classes.removeButton} 
+                  onClick={this.onRemoveMetadataKey(i)}>
+                  <DeleteIcon />
+                </Button>   
+              </div>
+            )}
+
+            <Button 
+              className={classes.button}
+              variant="contained" 
+              color="secondary"
+              onClick={this.onAddMetadataKey}
+            >
+              Add Key
+            </Button>
+
             <Typography variant='body1' className={classes.copy}>
               <span className={classes.important}>Dummy data json file</span>
 
