@@ -24,20 +24,20 @@ const dataUploaded = () => ({
   done: true
 });
 
-export const uploadData = (file, public_key, originalMetadata) => {
-  let metadata = {}
+export const uploadData = (file, publicKey, originalMetadata) => {
+  let metadata = {};
   originalMetadata.forEach( element => {
     metadata[element.key] = element.value;
   });
   
-  let uploadFile = async function (dispatch, ipfs, linnia, content) {
+  let uploadFile = async (dispatch, ipfs, linnia, content) => {
     let encrypted, dataUri;
     
     //Encrypt
     try {
       dispatch(uploadingToIpfs());
       encrypted = await Linnia.util.encrypt(
-         public_key,
+         publicKey,
          content,
       );
     } catch (e) {
@@ -72,7 +72,7 @@ export const uploadData = (file, public_key, originalMetadata) => {
       // Add those 2 has static variables of the Linnia js class
       metadata.encryptionScheme = "x25519-xsalsa20-poly1305";
       metadata.linniajsVersion = "0.3.0";
-      metadata.encryptionPublicKey = public_key;
+      metadata.encryptionPublicKey = publicKey;
 
       await linnia.addRecord(
          hash,

@@ -10,6 +10,13 @@ import TextField from '@material-ui/core/TextField';
 import Success from './../common/Success';
 import Failure from './../common/Failure';
 import jsonFile from '../dummy-data/Delicia Schowalter';
+import ErrorIcon from '@material-ui/icons/Error';
+import CloseIcon from '@material-ui/icons/Close';
+import green from '@material-ui/core/colors/green';
+import IconButton from '@material-ui/core/IconButton';
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import classNames from 'classnames';
 
 function TabContainer(props) {
   return (
@@ -19,9 +26,90 @@ function TabContainer(props) {
   );
 }
 
+function areDuplicatedKeys(metadata) {
+  var testObject = {},
+      duplicated = false;
+
+  metadata.forEach((item) => {
+    var key = item.key;  
+    if (key in testObject) {
+      duplicated = true;
+    }
+    else {
+      testObject[key] = true;
+    }
+  });
+
+  return duplicated;
+}
+
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+const variantIcon = {
+  error: ErrorIcon,
+};
+
+const messageStyles = theme => ({
+  success: {
+    backgroundColor: green[600],
+  },
+  error: {
+    backgroundColor: theme.palette.error.dark,
+  },
+  icon: {
+    fontSize: 20,
+  },
+  iconVariant: {
+    opacity: 0.9,
+    marginRight: theme.spacing.unit,
+  },
+  message: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
+
+function MySnackbarContent(props) {
+  const { classes, className, message, onClose, variant, ...other } = props;
+  const Icon = variantIcon[variant];
+
+  return (
+    <SnackbarContent
+      className={classNames(classes[variant], className)}
+      aria-describedby="client-snackbar"
+      message={
+        <span id="client-snackbar" className={classes.message}>
+          <Icon className={classNames(classes.icon, classes.iconVariant)} />
+          {message}
+        </span>
+      }
+      action={[
+        <IconButton
+          key="close"
+          aria-label="Close"
+          color="inherit"
+          className={classes.close}
+          onClick={onClose}
+        >
+          <CloseIcon className={classes.icon} />
+        </IconButton>,
+      ]}
+      {...other}
+    />
+  );
+}
+
+MySnackbarContent.propTypes = {
+  classes: PropTypes.object.isRequired,
+  className: PropTypes.string,
+  message: PropTypes.node,
+  onClose: PropTypes.func,
+  variant: PropTypes.oneOf(['error']).isRequired,
+};
+
+const MySnackbarContentWrapper = withStyles(messageStyles)(MySnackbarContent);
 
 const styles = (theme) => ({
   root: {
@@ -68,7 +156,9 @@ class UploadData extends Component {
         {'key':'domain','value':''},
         {'key':'keywords','value':''},
       ], 
-      value: 0, 
+      value: 0,
+      showErrorMessage: false,
+      errorMessage: '',
     };
   }
 
@@ -110,9 +200,17 @@ class UploadData extends Component {
 
   onAddMetadataKey = () => {
     const metadata = this.state.metadata.concat([{'key':'','value':''}])
-    this.setState({
-      metadata
-    });
+    if(areDuplicatedKeys(metadata)){
+      this.setState({
+        errorMessage: 'Metadata cannot contain duplicated keys',
+        showErrorMessage: true,
+      });
+    }
+    else{
+      this.setState({
+        metadata
+      });
+    }
   }
 
   onRemoveMetadataKey = index => event => {
@@ -123,13 +221,29 @@ class UploadData extends Component {
     });
   }
 
+  handleCloseErrorMessage = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({ showErrorMessage: false });
+  };
+
   uploadFile = event => {
     event.preventDefault();
     const file = this.state.file;
     const public_key = this.state.public_key;
     const metadata = this.state.metadata;
 
-    this.props.onUploadData(file, public_key, metadata);
+    if(areDuplicatedKeys(metadata)){
+      this.setState({
+        errorMessage: 'Metadata cannot contain duplicated keys',
+        showErrorMessage: true,
+      });
+    }
+    else{
+      this.props.onUploadData(file, public_key, metadata);
+    }
   };
 
   render() {
@@ -191,6 +305,22 @@ class UploadData extends Component {
               <span className={classes.important}>Metadata</span> should be what people will use to find your data. 
               What will be useful for you to query later?
             </Typography>
+
+            <Snackbar
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              open={this.state.showErrorMessage}
+              autoHideDuration={6000}
+              onClose={this.handleCloseErrorMessage}
+            >
+              <MySnackbarContentWrapper
+                onClose={this.handleCloseErrorMessage}
+                variant="error"
+                message={this.state.errorMessage}
+              />
+            </Snackbar>
 
             {metadata.map((m, i) => 
               <div key={'metadata-'+i.toString()}>
