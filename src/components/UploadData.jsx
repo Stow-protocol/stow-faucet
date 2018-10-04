@@ -67,6 +67,7 @@ const messageStyles = theme => ({
   },
   message: {
     display: 'flex',
+    fontSize: 15,
     alignItems: 'center',
   },
 });
