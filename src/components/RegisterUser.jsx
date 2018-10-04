@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import RegisterUserKeys from './RegisterUserKeys';
-import Wallet from "ethereumjs-wallet";
+import Linnia from '@linniaprotocol/linnia-js';
 import { withStyles } from '@material-ui/core/styles';
 import Success from './../common/Success';
 import Failure from './../common/Failure';
@@ -28,9 +28,9 @@ class RegisterUser extends Component {
   }
 
   generateKeys = () => {
-    const wallet = Wallet.generate();
-    let private_key = wallet.getPrivateKeyString();
-    let public_key = wallet.getPublicKeyString();
+    const keys = Linnia.util.genKeyPair();
+    let private_key = keys.privateKey;
+    let public_key = keys.publicKey;
     this.setState({ private_key: private_key, public_key: public_key });
   };
 
