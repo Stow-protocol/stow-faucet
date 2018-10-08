@@ -380,7 +380,7 @@ class UploadData extends Component {
                 <Typography variant='body1' className={classes.copy}>
                  Linnia recommended Dummy data json file will be used.
                  <br />
-                 <a href={dummyDataLink} target="_blank">Click here to preview our dummy data json file</a>
+                 <a href={dummyDataLink} target="_blank" rel="noopener noreferrer">Click here to preview our dummy data json file</a>
                 </Typography></TabContainer>}
 
               {value === 1 && <TabContainer>{/*TODO: this is currently not working.  Data ends up with extra \\\*/}
