@@ -15,5 +15,7 @@ npm run start
 npm run deploy
 ```
 
+## CI
 
+circle-ci
 
