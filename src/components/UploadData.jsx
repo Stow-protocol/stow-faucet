@@ -262,7 +262,7 @@ class UploadData extends Component {
              In about one minute you can view details of your upload {<a href={`https://qastg.api.stow-protocol/records/${dataHash}`} target={"_blank"} > HERE</a>}
             </Typography>
             <Typography variant="caption">
-             Your IPFS dataHash is: {dataHash}
+             Your Stow dataHash is: {dataHash}
             </Typography>
           </Success>
         </div>
