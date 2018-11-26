@@ -11,16 +11,16 @@ class Header extends Component {
         <div className='pure-g'>
           <div className='pure-u-1-1'>
               <button
-                onClick={this.navigateTo('/linnia-faucet/upload-data')}>
-                Upload Data to Linnia
+                onClick={this.navigateTo('/upload-data')}>
+                Upload Data to Stow
               </button>
               <button
-                onClick={this.navigateTo('/linnia-faucet/register-user')}>
-                Register Metamask User in Linnia
+                onClick={this.navigateTo('/register-user')}>
+                Register Metamask User in Stow
               </button>
               <button
-                onClick={this.navigateTo('/linnia-faucet')}>
-                Create Linnia Users
+                onClick={this.navigateTo('/')}>
+                Create Stow Users
               </button>
           </div>
         </div>

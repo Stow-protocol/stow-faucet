@@ -1,7 +1,7 @@
 import {
     UPLOAD_ERROR,
     UPLOADING_TO_IPFS,
-    UPLOADING_TO_LINNIA,
+    UPLOADING_TO_STOW,
     DATA_UPLOADED
   } from '../actions/UploadDataActions';
   
@@ -15,7 +15,7 @@ import {
     if (action.type === UPLOADING_TO_IPFS) {
       const { isLoading, message } = action;
       return Object.assign({}, state, { isLoading, message });
-    } else if (action.type === UPLOADING_TO_LINNIA) {
+    } else if (action.type === UPLOADING_TO_STOW) {
       const { isLoading, message } = action;
       return Object.assign({}, state, { isLoading, message });
     } else if (action.type === DATA_UPLOADED) {

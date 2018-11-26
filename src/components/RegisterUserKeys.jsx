@@ -74,7 +74,7 @@ class RegisterUserKeys extends Component {
           them. Save them carefully!
         </Typography>
         <Typography variant="body1" className={classes.copy}>
-          Next up, we need to register your ethereum address with the Linnia Protocol smart contracts.
+          Next up, we need to register your ethereum address with the Stow Protocol smart contracts.
         </Typography>
       </Success>
     );

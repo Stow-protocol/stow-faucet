@@ -20,10 +20,10 @@ class CreateUsersIntro extends Component {
           If you already have an Ethereum Address in Metamask then
           you can move onto step 3! If not, then no worries. Click
           the following button to generate an Ethereum Address for
-          1 Linnia User. 
+          1 Stow User. 
         </Typography>
         <Typography className={classes.copy} variant="body1" gutterBottom>
-          To understand more about Ethereum Addresses and Private Keys: <a href="https://github.com/ConsenSys/linnia-resources/" target="Resources"> Go Here </a>
+          To understand more about Ethereum Addresses and Private Keys: <a href="https://github.com/ConsenSys/stow-resources/" target="Resources"> Go Here </a>
         </Typography>
         <Typography className={classes.copy} variant="body1">
           After generating the Ethereum Address you will have to enter a

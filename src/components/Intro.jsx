@@ -18,7 +18,7 @@ class Intro extends Component {
           Hey there friend!
         </Typography>
         <Typography variant="body1" className={classes.copy}>
-          This faucet is to help you understand the Linnia protocol.
+          This faucet is to help you understand the Stow protocol.
           Before we begin please make sure you have installed MetaMask and are on the Ropsten test network. </Typography> 
         <Typography variant="body1" className={classes.copy}>
             <a href="https://metamask.io/" target='MetaMask'>

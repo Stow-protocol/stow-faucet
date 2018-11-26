@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import ThemeProvider from 'linnia-brand/ThemeProvider';
+import ThemeProvider from '@stowprotocol/brand/ThemeProvider';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 // Redux Store

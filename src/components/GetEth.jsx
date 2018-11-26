@@ -27,7 +27,7 @@ const styles = (theme) => ({
 const Explanation = ({ classes, getEth }) => (
   <div>
     <Typography variant="body1" className={classes.copy}>
-      You will need test Ether to register onto Linnia and to upload some data.  
+      You will need test Ether to register onto Stow and to upload some data.  
     </Typography>
     <Typography variant="body1" className={classes.copy}>
       If you don't have any, you can get one test Ether to your test account by clicking the button below.

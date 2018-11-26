@@ -14,7 +14,6 @@ const endDownloading = () => ({
 
 export function downloadKeys (eth_wallet) {
   return async (dispatch) => {
-    console.log("START DOWNLOADING")
     dispatch(startDownloading())
     try{
       await new Promise((resolve) => {
@@ -26,7 +25,7 @@ export function downloadKeys (eth_wallet) {
       //Download Eth Wallet
       var element = document.createElement('a');
       element.setAttribute('href', 'data:json,' + encodeURIComponent(JSON.stringify(wallet)));
-      element.setAttribute('download', "linnia_eth_wallet.json");
+      element.setAttribute('download', "stow-eth-wallet.json");
       element.style.display = 'none';
       document.body.appendChild(element);
       element.click();

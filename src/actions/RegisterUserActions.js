@@ -25,12 +25,12 @@ const registrationError = (message, userAddress, users) => ({
 })
 
 export function registerUser () {
-  // Register User on Linnia
+  // Register User on Stow
   return async (dispatch) => {
     dispatch(addUser())
-    const linnia = store.getState().auth.linnia
+    const stow = store.getState().auth.stow
     const [userAddress] = await store.getState().auth.web3.eth.getAccounts()
-    const { users } = await linnia.getContractInstances();
+    const { users } = await stow.getContractInstances();
 
     //Register User
     try{

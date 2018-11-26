@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import RegisterUserKeys from './RegisterUserKeys';
-import Linnia from '@linniaprotocol/linnia-js';
+import Stow from '@stowprotocol/stow-js';
 import { withStyles } from '@material-ui/core/styles';
 import Success from './../common/Success';
 import Failure from './../common/Failure';
@@ -28,7 +28,7 @@ class RegisterUser extends Component {
   }
 
   generateKeys = () => {
-    const keys = Linnia.util.genKeyPair();
+    const keys = Stow.util.genKeyPair();
     let private_key = keys.privateKey;
     let public_key = keys.publicKey;
     this.setState({ private_key: private_key, public_key: public_key });
@@ -50,7 +50,7 @@ class RegisterUser extends Component {
            <Success>
              <Typography variant='title' className={classes.alertText}>
                <p>Your account has been successfully registered with the <a target='_blank' rel="noopener noreferrer"
-                                                                href={"https://ropsten.etherscan.io/address/" + users.address}>Linnia
+                                                                href={"https://ropsten.etherscan.io/address/" + users.address}>Stow
                  User Contract</a> at address {userAddress}.</p>
                <a target='_blank' rel="noopener noreferrer" href={"https://ropsten.etherscan.io/address/" + userAddress}> Check out out your
                  transaction record on etherscan.
@@ -80,10 +80,9 @@ class RegisterUser extends Component {
             variant="contained"
             color="secondary"
             className={classes.button}
-            style={{fontSize:'3rem'}}
             onClick={this.registerUser}
           >
-            Register Linnia User
+            Register Stow User
           </Button>
         </div>
       );
@@ -95,7 +94,7 @@ class RegisterUser extends Component {
             First, we need to generate a pair of encryption keys.
             You will use these keys to encrypt and decrypt files
             on behalf of your user. To understand more about
-            Private and Public Encryption Keys please: <a href="https://github.com/ConsenSys/linnia-resources/">Go Here</a>
+            Private and Public Encryption Keys please: <a href="https://github.com/ConsenSys/stow-resources/">Go Here</a>
           </Typography>
           <Button
             type="button"
@@ -104,7 +103,7 @@ class RegisterUser extends Component {
             className={classes.button}
             onClick={this.generateKeys}
           >
-            Generate Linnia Encryption Keys
+            Generate Stow Encryption Keys
           </Button>
         </div>
       );

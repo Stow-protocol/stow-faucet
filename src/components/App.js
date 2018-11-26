@@ -5,7 +5,7 @@ import StepLabel from "@material-ui/core/StepLabel";
 import StepContent from "@material-ui/core/StepContent";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from '@material-ui/core/styles';
-import Logo from 'linnia-brand/components/Logo';
+import Logo from '@stowprotocol/brand/components/Logo';
 import StepContainer from '../common/StepContainer';
 import Loader from '../common/Loader';
 import Done from '../common/Done';
@@ -51,7 +51,7 @@ const logoStyle = {
 };
 
 const steps = [{
-    title: "Welcome To The Linnia Faucet",
+    title: "Welcome To The Stow Faucet",
     Component: <Intro />,
     authenticated: false
   }, {
@@ -115,7 +115,7 @@ class App extends Component {
           className={classes.heroTitle}
           variant='display3'
         >
-          Linnia Faucet
+          Stow Faucet
         </Typography>
         <Stepper
           className={classes.stepper}

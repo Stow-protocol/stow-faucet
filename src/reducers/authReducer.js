@@ -2,21 +2,21 @@ import { AUTH_SUCCESS, AUTH_FAILURE } from '../actions/AuthActions';
 
 const initialState = {
   web3: null,
-  linnia: null,
+  stow: null,
   ipfs: null,
   isAuthenticated: false,
   authError: '',
 };
 
-const linniaReducer = (state = initialState, action) => {
+const AuthReducer = (state = initialState, action) => {
   if (action.type === AUTH_SUCCESS) {
-    const { web3, ipfs, linnia } = action;
+    const { web3, ipfs, stow } = action;
     const isAuthenticated = true;
 
     return Object.assign({}, state, {
       web3,
       ipfs,
-      linnia,
+      stow,
       isAuthenticated,
     });
   } else if (action.type === AUTH_FAILURE) {
@@ -27,4 +27,4 @@ const linniaReducer = (state = initialState, action) => {
   return state;
 };
 
-export default linniaReducer;
+export default AuthReducer;
