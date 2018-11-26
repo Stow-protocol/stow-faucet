@@ -6,11 +6,13 @@ const mapStateToProps = (state, ownProps) => {
   const isLoading = state.uploadData.isLoading
   const message = state.uploadData.message
   const done = state.uploadData.done
+  const dataHash = state.uploadData.dataHash
 
   return {
     isLoading,
     message,
     done,
+    dataHash
   }
 }
 
