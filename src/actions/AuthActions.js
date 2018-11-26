@@ -11,7 +11,6 @@ export const LOCKED_METAMASK = 'LOCKED_METAMASK';
 export const STOW_MISCONFIGURED = 'STOW_MISCONFIGURED';
 export const IPFS_MISCONFIGURED = 'IPFS_MISCONFIGURED';
 
-const hubAddress = config.STOW_HUB_ADDRESS;
 const protocol = config.STOW_IPFS_PROTOCOL;
 const port = config.STOW_IPFS_PORT;
 const host = config.STOW_IPFS_HOST;
@@ -71,7 +70,7 @@ export const authenticate = () => async dispatch => {
     return dispatch(authFailure(IPFS_MISCONFIGURED));
   }
 
-  const stow = new Stow(web3, { hubAddress });
+  const stow = new Stow(web3);
 
   dispatch(authSuccess(web3, ipfs, stow));
 };
