@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 const errorCopy = {
   NO_METAMASK: 'No Metamask found. Please install Metamask and try again.',
   LOCKED_METAMASK: 'Please unlock Metamask and refresh to continue.',
-  LINNIA_MISCONFIGURED: 'No hub found at supplied address on supplied network. Please check your configuration and network and try again.',
+  STOW_MISCONFIGURED: 'No hub found at supplied address on supplied network. Please check your configuration and network and try again.',
   IPFS_MISCONFIGURED: 'Connect to IPFS failed. Are you sure you configured it correctly?',
   STILL_LOADING: 'MetaMask and IPFS still initalizing! Please try again in a second.'
 };

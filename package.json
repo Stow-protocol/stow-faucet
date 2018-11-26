@@ -1,12 +1,13 @@
 {
-  "name": "linnia-faucet",
+  "name": "stow-faucet",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://consensys.github.io/linnia-faucet/",
+  "homepage": "https://faucet.stow-protocol.com",
   "dependencies": {
-    "@linniaprotocol/linnia-js": "^0.3.0",
     "@material-ui/core": "^1.4.1",
     "@material-ui/icons": "^2.0.3",
+    "@stowprotocol/brand": "0.0.2",
+    "@stowprotocol/stow-js": "^0.3.4",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "crypto": "^1.0.1",
@@ -15,7 +16,6 @@
     "gh-pages": "^1.2.0",
     "history": "^4.7.2",
     "ipfs-mini": "^1.1.2",
-    "linnia-brand": "^1.0.16",
     "metamask-logo": "^2.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
@@ -27,7 +27,8 @@
     "react-router-redux": "^4.0.8",
     "react-scripts": "^2.0.0",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "web3": "^1.0.0-beta.36"
   },
   "scripts": {
     "start": "react-scripts start",

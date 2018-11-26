@@ -1,6 +1,6 @@
-# Linnia Faucet
+# Stow Faucet
 
-This Faucet is to create a Linnia User with one click
+This Faucet is to create a Stow User with one click
 
 ## Run Locally
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Logo from 'linnia-brand/components/Logo';
+import Logo from '@stowprotocol/brand/components/Logo';
 import { withStyles } from '@material-ui/core/styles';
 
 const logoStyle = {

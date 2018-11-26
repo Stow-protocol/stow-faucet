@@ -9,7 +9,6 @@ const initialState = {
 
 const createUsersReducer = (state = initialState, action) => {
   if (action.type === START_DOWNLOADING) {
-    console.log("START DOWNLOADING2")
     const { isLoading } = action;
     return Object.assign({}, state, { isLoading });
   } else if (action.type === END_DOWNLOADING) {

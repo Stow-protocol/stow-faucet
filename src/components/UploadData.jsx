@@ -250,14 +250,13 @@ class UploadData extends Component {
   render() {
     const { done, classes, message } = this.props;
     const { validationError, value, metadata } = this.state;
-    const isLocal = window.location.hostname === 'localhost';
-    const dummyDataLink = `${isLocal ? '' : '/linnia-faucet'}/dummy-data/Delicia%20Schowalter.json`;
+    const dummyDataLink = `/dummy-data/Delicia%20Schowalter.json`;
     if (done) {
       return (
         <div>
           <Success>
             <Typography variant="display1" className={classes.alertText}>
-              The file was uploaded to Linnia!
+              The file was uploaded to Stow!
             </Typography>
           </Success>
         </div>
@@ -284,7 +283,7 @@ class UploadData extends Component {
       return (
         <div>
           <Typography variant="body1" className={classes.copy}>
-            Now its time to upload your first record to the Linnia Protocol!
+            Now its time to upload your first record to the Stow Protocol!
             We'll use some dummy medical data that we have created, dress it up, and upload it.
           </Typography>
           <Typography variant='body1' className={classes.copy}>
@@ -367,23 +366,15 @@ class UploadData extends Component {
             </Button>
 
             <Typography variant='body1' className={classes.copy}>
-              <span className={classes.important}>Dummy data json file</span>
-
+              <span className={classes.important}>Choose file</span>
             </Typography>
 
             <div className={classes.root}>
                 <Tabs value={value} onChange={this.handleChange}>
-                  <Tab label="Recommended Use Linnia Dummy Data" />
-                  <Tab label="Advanced" />
+                  <Tab label="Upload File" />
+                  <Tab label="Use Dummy Data" />
                 </Tabs>
               {value === 0 && <TabContainer>
-                <Typography variant='body1' className={classes.copy}>
-                 Linnia recommended Dummy data json file will be used.
-                 <br />
-                 <a href={dummyDataLink} target="_blank" rel="noopener noreferrer">Click here to preview our dummy data json file</a>
-                </Typography></TabContainer>}
-
-              {value === 1 && <TabContainer>{/*TODO: this is currently not working.  Data ends up with extra \\\*/}
                 <Typography variant='body1' className={classes.copy}>
                 Make sure you choose a file that contains <span className={classes.important}>JSON</span>. Everything else will choke!
                 </Typography>
@@ -393,6 +384,12 @@ class UploadData extends Component {
                 onChange={this.changeFile}
                 />
               </TabContainer>}
+              {value === 1 && <TabContainer>
+                <Typography variant='body1' className={classes.copy}>
+                 A generic fake medical record will be uploaded.
+                 <br />
+                 <a href={dummyDataLink} target="_blank" rel="noopener noreferrer">Click here to preview our dummy data json file</a>
+                </Typography></TabContainer>}
             </div>
             <br />
             <Button 
@@ -401,7 +398,7 @@ class UploadData extends Component {
               color="secondary"
               type="submit"
             >
-              Upload to IPFS and Append to Linnia Protocol
+              Upload to IPFS and Append to Stow Protocol
             </Button>
           </form>
         </div>
