@@ -18,10 +18,11 @@ const uploadingToIpfs = () => ({
   isLoading: true
 });
 
-const dataUploaded = () => ({
+const dataUploaded = (dataHash) => ({
   type: DATA_UPLOADED,
   isLoading: false,
-  done: true
+  done: true,
+  dataHash
 });
 
 export const uploadData = (file, publicKey, originalMetadata) => {
@@ -90,7 +91,7 @@ export const uploadData = (file, publicKey, originalMetadata) => {
       return;
     }
 
-    dispatch(dataUploaded());
+    dispatch(dataUploaded(hash));
   };
 
   // Upload data to Stow

@@ -9,6 +9,7 @@ import {
     isLoading: false,
     message: null,
     done: false,
+    dataHash: ""
   };
   
   const uploadDataReducer = (state = initialState, action) => {
@@ -19,8 +20,8 @@ import {
       const { isLoading, message } = action;
       return Object.assign({}, state, { isLoading, message });
     } else if (action.type === DATA_UPLOADED) {
-      const { isLoading, done } = action;
-      return Object.assign({}, state, { isLoading, done });
+      const { isLoading, done, dataHash } = action;
+      return Object.assign({}, state, { isLoading, done, dataHash });
     } else if (action.type === UPLOAD_ERROR) {
       const { isLoading, message } = action;
       return Object.assign({}, state, { isLoading, message });
