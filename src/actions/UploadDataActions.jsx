@@ -72,7 +72,7 @@ export const uploadData = (file, publicKey, originalMetadata) => {
       // TODO, get the encryption scheme and the stow js version from stow js object
       // Add those 2 has static variables of the stow js class
       metadata.encryptionScheme = "x25519-xsalsa20-poly1305";
-      metadata.stowjsVersion = "0.3.2";
+      metadata.stowjsVersion = "0.3.5";
       metadata.encryptionPublicKey = publicKey;
 
       await stow.addRecord(
