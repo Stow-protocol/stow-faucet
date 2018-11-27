@@ -248,7 +248,7 @@ class UploadData extends Component {
   };
 
   render() {
-    const { done, classes, message } = this.props;
+    const { done, classes, message, dataHash } = this.props;
     const { validationError, value, metadata } = this.state;
     const dummyDataLink = `/dummy-data/Delicia%20Schowalter.json`;
     if (done) {
@@ -257,6 +257,12 @@ class UploadData extends Component {
           <Success>
             <Typography variant="display1" className={classes.alertText}>
               The file was uploaded to Stow!
+            </Typography>
+            <Typography variant="body1">
+             In about one minute you can view details of your upload {<a href={`https://qastg.api.stow-protocol/records/${dataHash}`} target={"_blank"} > HERE</a>}
+            </Typography>
+            <Typography variant="caption">
+             Your Stow dataHash is: {dataHash}
             </Typography>
           </Success>
         </div>
